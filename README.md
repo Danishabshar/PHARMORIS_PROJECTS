@@ -1,3 +1,33 @@
+Getting Started
+
+Follow these steps to run the project locally:
+
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/pharmoris-dashboard.git
+cd pharmoris-dashboard
+2️⃣ Install Dependencies
+
+Using npm:
+
+npm install
+
+Or using yarn / pnpm:
+
+yarn install
+# or
+pnpm install
+3️⃣ Run the Development Server
+npm run dev
+4️⃣ Open in Browser
+
+Visit:
+
+http://localhost:3000
+🛠️ Build for Production
+npm run build
+npm start
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -37,194 +67,176 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 # Pharma Insights Dashboard
-<!-- 
-A production-grade dashboard built with Next.js App Router, focused on data-driven UI architecture, reusable component systems, and type-safe design patterns. The application visualizes pharmaceutical data from the OpenFDA API using a structured approach to server/client separation, generic abstractions, and scalable UI composition.
+Pharma Insights Dashboard
 
-![Next.js](https://img.shields.io/badge/Next.js-14.0-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC)
-![License](https://img.shields.io/badge/license-MIT-green)
+A production-grade dashboard built using Next.js (App Router), focused on scalable frontend architecture, reusable component systems, and type-safe development.
 
-## 📋 Table of Contents
-- [Overview](#-overview)
-- [Architectural Patterns](#-architectural-patterns)
-- [Component Architecture](#-component-architecture)
-- [Data Flow](#-data-flow)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Scalability](#-scalability)
-- [Future Improvements](#-future-improvements)
+The application visualizes pharmaceutical data from external APIs using a structured, data-driven UI approach.
 
-## 📌 Overview
+📌 Overview
 
-This project demonstrates how to architect a modern frontend system that is:
+This project demonstrates how to build a modern frontend system that is:
 
-- **Composable** – built using reusable, isolated components
-- **Type-safe** – leveraging TypeScript generics and strict typing
-- **Data-driven** – UI derived from structured configuration (columns, cards)
-- **Scalable** – follows patterns suitable for large applications
+Composable → Built using reusable, isolated components
 
-## 🧱 Architectural Patterns Used
+Type-safe → Powered by TypeScript generics and strict typing
 
-### 1. Separation of Concerns (Server vs Client)
+Data-driven → UI derived from structured configurations
 
-The application follows Next.js App Router architecture with clear separation:
+Scalable → Designed with production-level architecture in mind
 
-**Server Components**
-- Responsible for data fetching
-- API integration (OpenFDA)
-- Data transformation layer
+⚙️ Tech Stack
 
-**Client Components**
-- UI rendering
-- Interactivity (sorting, hover states)
-- State management
+Next.js (App Router)
 
+React
+
+TypeScript
+
+Tailwind CSS
+
+🏗️ Architecture
+1. Server vs Client Separation
+
+Server Components
+
+Data fetching
+
+API integration
+
+Data transformation
+
+Client Components
+
+UI rendering
+
+Interactions (sorting, hover states)
+
+Local state handling
 
 This ensures:
-- Decoupling from API inconsistencies
-- Predictable UI contracts
-- Easier extensibility
 
-### 3. Generic Component Pattern (Reusable Table)
+Better performance
 
-A generic table abstraction is implemented:
+Clear separation of concerns
 
-```typescript
+Predictable UI contracts
+
+🧩 Design Patterns Used
+1. Compound Component Pattern
+
+The UI uses the compound component pattern to build flexible and composable components.
+
+Example (KPI Cards):
+
+<KpiCard>
+  <KpiCard.Icon />
+  <KpiCard.Content>
+    <KpiCard.Value />
+    <KpiCard.Label />
+    <KpiCard.Delta />
+  </KpiCard.Content>
+</KpiCard>
+
+Benefits:
+
+Flexible composition
+
+Reusable sub-components
+
+Clean and readable API
+
+2. Atomic Design Approach
+
+The UI is structured using atomic design principles:
+
+Atoms → Buttons, text, icons
+
+Molecules → Card sections, table rows
+
+Organisms → KPI sections, tables
+
+Pages → Complete dashboard screens
+
+Why this matters:
+
+Improves scalability
+
+Encourages reuse
+
+Makes refactoring easier
+
+3. Generic Component Pattern
+
+Reusable abstractions like a generic table:
+
 interface TableProps<T> {
   data: T[];
   columns: ColumnDef<T>[];
 }
 
-Design Token Pattern
-UI styling is abstracted using token-based mapping:
+Benefits:
 
-typescript
+Strong typing
+
+Reusability across modules
+
+Decoupled UI logic
+
+4. Controlled Rendering via Props
+
+All components are pure and declarative:
+
+<Table data={data} columns={columns} />
+<KpiCardSection cards={cards} />
+
+No hidden dependencies → easier debugging and maintainability.
+
+5. Design Token Pattern
+
+Centralized styling via tokens:
+
 const STOCK_STATUS_STYLES = {
   IN_STOCK: 'text-green-400 bg-green-500/10',
   LOW_STOCK: 'text-yellow-400 bg-yellow-500/10',
   OUT_OF_STOCK: 'text-red-400 bg-red-500/10'
 } as const;
-This provides:
 
-Centralized styling logic
+Benefits:
 
-Consistency across components
+Consistency
 
-Easy theming/extensibility
+Easy theming
 
-6. Compound Component Pattern (KPI System)
-KPI cards are built using composable sub-components:
-
-tsx
-<KpiCard>
-  <KpiCard.Icon icon={trendingUp} />
-  <KpiCard.Content>
-    <KpiCard.Value>{value}</KpiCard.Value>
-    <KpiCard.Label>{label}</KpiCard.Label>
-    <KpiCard.Delta value={delta} />
-  </KpiCard.Content>
-</KpiCard>
-This allows:
-
-Flexible composition
-
-Independent testing
-
-Reusability of primitives  
-
-Controlled Rendering via Props
-All components are pure and declarative:
-
-tsx
-<Table data={data} columns={columns} />
-<KpiCardSection cards={cards} />
-No hidden dependencies, ensuring:
-
-Predictable rendering
-
-Easier debugging
-
-Better maintainability
-
- Controlled Rendering via Props
-All components are pure and declarative:
-
-tsx
-<Table data={data} columns={columns} />
-<KpiCardSection cards={cards} />
-No hidden dependencies, ensuring:
-
-Predictable rendering
-
-Easier debugging
-
-Better maintainability
-
-8. Type-Driven Development
-TypeScript is used as a first-class design tool:
-
-Domain models (Drug, StockStatus)
-
-Generic abstractions (Table<T>)
-
-Key-safe mappings (as const, keyof typeof)
-
-This enforces:
-
-Compile-time safety
-
-Self-documenting code
-
-Reduced runtime errors
-
-
-State Management Approach
-Minimal client state
-
-Derived state from props
-
-Sorting handled locally in table
-
-No global state required
-
-This aligns with: "Server-first data, client-only interaction"
-
-🎨 UI System
-Tailwind CSS utility-first styling
-
-Tokenized colors and spacing
-
-Dark theme dashboard layout
-
-Consistent typography hierarchy
+Centralized styling control
 
 📂 Project Structure
-text
 pharma-insights-dashboard/
 ├── app/
 │   └── insights/
-│       ├── page.tsx            // Server entry (data fetching)
-│       ├── InsightsClient.tsx  // Client UI composition
-│       └── InsightsTable.tsx   // Table integration
+│       ├── page.tsx
+│       ├── InsightsClient.tsx
+│       └── InsightsTable.tsx
 ├── components/
-│   ├── Table.tsx               // Generic table system
-│   ├── KpiCards.tsx            // KPI component system
-│   └── Navbar.tsx              // Navigation system
+│   ├── Table.tsx
+│   ├── KpiCards.tsx
+│   └── Navbar.tsx
 ├── lib/
-│   └── utils.ts                // UI utilities & tokens
+│   └── utils.ts
 ├── types/
-│   └── index.ts                // Domain models & types
-└── public/                     // Static assets 
-
-
-This README provides:
-1. **Professional branding** with badges and clear structure
-2. **Comprehensive documentation** of all architectural patterns
-3. **Code examples** showing key implementations
-4. **Project structure** for easy navigation
-5. **Setup instructions** for new developers
-6. **Future roadmap** for scalability discussions
-7. **Learning resources** for team onboarding
-
-The document effectively communicates both what you built and why you built it that way, which is crucial for team collaboration and project maintenance. -->
+│   └── index.ts
+└── public/
+🛠️ Getting Started
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/pharmoris-dashboard.git
+cd pharmoris-dashboard
+2️⃣ Install Dependencies
+npm install
+# or
+yarn install
+# or
+pnpm install
+3️⃣ Run Development Server
+npm run dev
+4️⃣ Open in Browser
+http://localhost:3000
