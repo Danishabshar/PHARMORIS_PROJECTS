@@ -76,8 +76,6 @@ export default function CostSavingsChart({ data }: CostSavingsChartProps) {
           </div>
         </div>
       </div>
-
-      {/* Chart */}
       <div className="h-[220px]">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: 0 }}>

@@ -89,7 +89,6 @@ export default function DataTable({ data }: DataTableProps) {
         </div>
       </div>
 
-      {/* Scrollable table */}
       <div className="overflow-x-auto">
         <table className="w-full min-w-[680px] border-collapse" role="table">
           <thead>
@@ -137,7 +136,6 @@ const TableRow = ({ drug, isLast }: { drug: Drug; isLast: boolean }) => {
         !isLast ? "border-b border-white/[0.04]" : ""
       }`}
     >
-      {/* Drug Name */}
       <td className="px-5 py-3.5">
         <div className="flex flex-col">
           <span className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors">
@@ -146,13 +144,9 @@ const TableRow = ({ drug, isLast }: { drug: Drug; isLast: boolean }) => {
           <span className="text-[10px] text-slate-600 mt-0.5">{drug.category}</span>
         </div>
       </td>
-
-      {/* Manufacturer */}
       <td className="px-5 py-3.5">
         <span className="text-sm text-slate-400">{drug.manufacturer}</span>
       </td>
-
-      {/* Stock Status */}
       <td className="px-5 py-3.5">
         <span
           className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${stockStatusColor(
@@ -163,8 +157,6 @@ const TableRow = ({ drug, isLast }: { drug: Drug; isLast: boolean }) => {
           {drug.stockStatus}
         </span>
       </td>
-
-      {/* Price Change */}
       <td className="px-5 py-3.5">
         <span
           className={`font-mono text-sm font-medium ${priceChangeColor(drug.priceChange)}`}
@@ -173,8 +165,6 @@ const TableRow = ({ drug, isLast }: { drug: Drug; isLast: boolean }) => {
           {drug.priceChange.toFixed(1)}%
         </span>
       </td>
-
-      {/* Last Updated */}
       <td className="px-5 py-3.5">
         <span className="text-sm text-slate-500">{formatDate(drug.lastUpdated)}</span>
       </td>

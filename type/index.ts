@@ -1,5 +1,5 @@
 export type StockStatus = "In Stock" | "Low Stock" | "Out of Stock" | "On Order";
-
+export type AlertType = "critical" | "warning" | "info";
 export interface Drug {
   id: string;
   name: string;
@@ -8,6 +8,21 @@ export interface Drug {
   priceChange: number; // percentage
   lastUpdated: string;
   category: string;
+}
+export interface AlertPanelProps {
+  title?: string;
+  subtitle?: string;
+  badge?: number;
+  alerts?: AlertItem[];
+  onViewAll?: () => void;
+  className?: string;
+}
+export interface AlertItem {
+  id: string;
+  drug: string;
+  type: AlertType;
+  message: string;
+  time: string;
 }
 
 export interface KPICard {
@@ -31,4 +46,16 @@ export type SortDirection = "asc" | "desc";
 export interface SortState {
   key: SortKey;
   direction: SortDirection;
+}
+
+export type StatusType = "online" | "offline" | "warning" | "neutral";
+
+export interface StatusItemType {
+  label?: string;
+  value: string;
+  status?: StatusType;
+}
+
+export interface StatusBarProps {
+  items: StatusItemType[];
 }

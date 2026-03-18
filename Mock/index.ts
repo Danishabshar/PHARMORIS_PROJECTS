@@ -1,5 +1,5 @@
 
-import type { Drug, KPICard, CostSavingDataPoint } from "../type/index";
+import type { Drug, KPICard, CostSavingDataPoint ,AlertType, AlertItem, StatusItemType} from "../type/index";
 
   export const kpiCards: KPICard[] = [
   {
@@ -144,3 +144,119 @@ import type { Drug, KPICard, CostSavingDataPoint } from "../type/index";
   { month: "Mar", savings: 600000, target: 460000 },
 ];
 
+export const SAMPLE_ALERTS: AlertItem[] = [
+  { id: "1", drug: "Amoxicillin 250mg", type: "critical", message: "Stock depleted — reorder urgent", time: "4m" },
+  { id: "2", drug: "Ramipril 5mg", type: "critical", message: "Out of stock — 3 pharmacies affected", time: "18m" },
+  { id: "3", drug: "Atorvastatin 20mg", type: "warning", message: "Low stock threshold reached", time: "32m" },
+  { id: "4", drug: "Sertraline 50mg", type: "warning", message: "Price increase detected +3.7%", time: "1h" },
+  { id: "5", drug: "Omeprazole 20mg", type: "info", message: "Delivery scheduled for tomorrow", time: "2h" },
+];
+
+export const statusData: StatusItemType[] = [
+  {
+    value: "All systems operational",
+    status: "online",
+  },
+  {
+    label: "Last sync",
+    value: "2 min ago",
+  },
+  {
+    label: "NHS API",
+    value: "Connected",
+    status: "online",
+  },
+];
+
+export const mockTableData: Drug[] = [
+  {
+    id: "1",
+    name: "Paracetamol",
+    category: "Painkiller",
+    manufacturer: "Cipla",
+    stockStatus: "In Stock",
+    priceChange: 2.5,
+    lastUpdated: "2026-03-10",
+  },
+  {
+    id: "2",
+    name: "Amoxicillin",
+    category: "Antibiotic",
+    manufacturer: "Sun Pharma",
+    stockStatus: "Low Stock",
+    priceChange: -1.2,
+    lastUpdated: "2026-03-15",
+  },
+  {
+    id: "3",
+    name: "Ibuprofen",
+    category: "Anti-inflammatory",
+    manufacturer: "Dr. Reddy's",
+    stockStatus: "In Stock",
+    priceChange: 1.8,
+    lastUpdated: "2026-03-11",
+  },
+  {
+    id: "4",
+    name: "Azithromycin",
+    category: "Antibiotic",
+    manufacturer: "Lupin",
+    stockStatus: "Out of Stock",
+    priceChange: -0.5,
+    lastUpdated: "2026-03-14",
+  },
+  {
+    id: "5",
+    name: "Metformin",
+    category: "Diabetes",
+    manufacturer: "Torrent Pharma",
+    stockStatus: "Low Stock",
+    priceChange: 0.0,
+    lastUpdated: "2026-03-16",
+  },
+  {
+    id: "6",
+    name: "Atorvastatin",
+    category: "Cholesterol",
+    manufacturer: "Zydus",
+    stockStatus: "In Stock",
+    priceChange: 3.2,
+    lastUpdated: "2026-03-12",
+  },
+  {
+    id: "7",
+    name: "Pantoprazole",
+    category: "Acidity",
+    manufacturer: "Alkem",
+    stockStatus: "In Stock",
+    priceChange: -0.9,
+    lastUpdated: "2026-03-13",
+  },
+  {
+    id: "8",
+    name: "Cefixime",
+    category: "Antibiotic",
+    manufacturer: "Mankind",
+    stockStatus: "Low Stock",
+    priceChange: 2.1,
+    lastUpdated: "2026-03-17",
+  },
+  {
+    id: "9",
+    name: "Losartan",
+    category: "Blood Pressure",
+    manufacturer: "Aurobindo Pharma",
+    stockStatus: "In Stock",
+    priceChange: 1.4,
+    lastUpdated: "2026-03-18",
+  },
+  {
+    id: "10",
+    name: "Levothyroxine",
+    category: "Thyroid",
+    manufacturer: "Abbott",
+    stockStatus: "Out of Stock",
+    priceChange: -2.3,
+    lastUpdated: "2026-03-09",
+  },
+];
