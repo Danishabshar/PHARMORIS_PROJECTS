@@ -1,5 +1,5 @@
 
-import type { StockStatus } from "../type/index";
+
 
 export function formatCurrency(value: number): string {
   if (value >= 1_000_000) return `£${(value / 1_000_000).toFixed(1)}M`;
@@ -18,18 +18,13 @@ export function formatDate(iso: string): string {
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
 }
 
-export function stockStatusColor(status: StockStatus): string {
-  switch (status) {
-    case "In Stock":
-      return "text-emerald-400 bg-emerald-400/10 border-emerald-400/20";
-    case "Low Stock":
-      return "text-amber-400 bg-amber-400/10 border-amber-400/20";
-    case "Out of Stock":
-      return "text-rose-400 bg-rose-400/10 border-rose-400/20";
-    case "On Order":
-      return "text-sky-400 bg-sky-400/10 border-sky-400/20";
-  }
-}
+
+export const STOCK_STATUS_STYLES = {
+  "In Stock": "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+  "Low Stock": "text-amber-400 bg-amber-400/10 border-amber-400/20",
+  "Out of Stock": "text-rose-400 bg-rose-400/10 border-rose-400/20",
+  "On Order": "text-sky-400 bg-sky-400/10 border-sky-400/20",
+} as const;
 
 export function priceChangeColor(change: number): string {
   if (change > 0) return "text-rose-400";

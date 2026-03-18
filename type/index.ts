@@ -1,4 +1,4 @@
-export type StockStatus = "In Stock" | "Low Stock" | "Out of Stock" | "On Order";
+export type StockStatus = "In Stock" | "Low Stock" | "Out of Stock" | "On Order" | "string";
 export type AlertType = "critical" | "warning" | "info";
 export interface Drug {
   id: string;

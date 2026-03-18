@@ -1,6 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type NavbarContextType = {
   activeItem: string;
@@ -56,23 +58,26 @@ export function NavbarMenu({ children }: { children: React.ReactNode }) {
 }
 
 export function NavbarItem({ label }: { label: string }) {
-  const { activeItem, setActiveItem } = useNavbar();
+  const pathname = usePathname();
+
+  const path = label.toLowerCase() === "dashboard" ? "/" : `/${label.toLowerCase()}`;
+  const isActive = pathname === path;
 
   return (
     <li>
-      <button
-        onClick={() => setActiveItem(label)}
+      <Link
+        href={path}
         className={`relative rounded-md px-3.5 py-1.5 text-xs font-medium transition ${
-          activeItem === label
+          isActive
             ? "bg-white/10 text-white"
             : "text-slate-400 hover:text-white"
         }`}
       >
-        {activeItem === label && (
+        {isActive && (
           <span className="absolute inset-x-3 -bottom-[1px] h-px bg-[#00D4FF]/60" />
         )}
         {label}
-      </button>
+      </Link>
     </li>
   );
 }
